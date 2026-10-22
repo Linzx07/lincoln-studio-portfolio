@@ -80,7 +80,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--orange); outlin
 .primary-action:hover .icon-down { transform: rotate(45deg) translate(1px, 1px); }
 
 .patchbay {
-  min-height: 470px; position: relative; overflow: hidden;
+  min-height: 470px; position: relative; overflow: hidden; display: flex; flex-direction: column;
   align-self: center; background: var(--ink); color: var(--white);
   border-radius: var(--radius); box-shadow: 18px 22px 48px rgba(16,24,32,.16);
 }
@@ -91,23 +91,17 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--orange); outlin
 .patchbay-head { min-height: 58px; display: flex; align-items: center; justify-content: space-between; padding: .7rem 1.2rem; border-bottom: 1px solid #53606a; }
 .patchbay-head strong { font-size: 1rem; }
 .patchbay-head span { color: #c5d0d5; font-size: .84rem; line-height: 1.35; }
-.cables { position: absolute; inset: 58px 0 0; width: 100%; height: calc(100% - 58px); }
-.cable { fill: none; stroke: #5c6870; stroke-width: 4; opacity: .32; transition: stroke .35s var(--ease), opacity .35s var(--ease); }
-.patchbay[data-active="hype"] .cable-hype,
-.patchbay[data-active="ebha"] .cable-ebha,
-.patchbay[data-active="forum"] .cable-forum,
-.patchbay[data-active="finance"] .cable-finance { stroke: var(--orange); stroke-width: 7; opacity: 1; }
-.source-stack, .destination-stack { position: absolute; top: 86px; bottom: 24px; display: grid; grid-template-rows: repeat(4, 1fr); align-items: center; z-index: 2; }
-.source-stack { left: 1rem; }
-.destination-stack { right: 1rem; text-align: right; }
-.source-stack span, .destination-stack span { padding: .35rem .5rem; color: #dbe3e6; background: #202b33; border: 1px solid #50606a; border-radius: 3px; font-size: .8rem; line-height: 1.35; }
-.route-controls { position: absolute; top: 92px; left: 23%; right: 27%; bottom: 22px; display: grid; grid-template-rows: repeat(4, 1fr); z-index: 3; list-style: none; margin: 0; padding: 0; }
-.route-controls li { display: grid; align-items: center; }
-.route-controls a { align-self: center; display: block; padding: .7rem .8rem; background: #151f27; border: 1px solid #43515a; border-radius: 4px; text-decoration: none; transition: transform .3s var(--ease), border-color .3s, background .3s; }
+.route-controls { flex: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; z-index: 3; list-style: none; margin: 0; padding: 1.1rem; background: #43515a; }
+.route-controls li { display: grid; min-width: 0; }
+.route-controls a { min-height: 160px; position: relative; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.1rem; background: #151f27; border: 1px solid transparent; border-radius: 3px; text-decoration: none; transition: transform .3s var(--ease), border-color .3s, background .3s; }
+.route-controls a::before { content: ""; position: absolute; top: 1rem; right: 1rem; width: 12px; height: 12px; border-radius: 50%; background: var(--cobalt); }
+.route-controls li:nth-child(2) a::before { background: var(--orange); }
+.route-controls li:nth-child(3) a::before { background: var(--green); }
+.route-controls li:nth-child(4) a::before { background: #a7b9ff; }
 .route-controls a b, .route-controls a span { display: block; }
 .route-controls a b { font-size: .92rem; color: var(--white); }
 .route-controls a span { margin-top: .15rem; font-size: .84rem; line-height: 1.35; color: #b7c2c7; }
-.route-controls a:hover, .route-controls a:focus-visible, .route-controls a[aria-current="true"] { transform: translateX(7px); background: #26333d; border-color: var(--orange); }
+.route-controls a:hover, .route-controls a:focus-visible, .route-controls a[aria-current="true"] { transform: translateY(-3px); background: #26333d; border-color: var(--orange); }
 .hero-foot { position: absolute; left: 0; bottom: .7rem; max-width: 54rem; margin: 0; font-size: .88rem; line-height: 1.4; color: var(--ink-soft); }
 
 .projects { border-top: 1px solid var(--rule); }
@@ -151,6 +145,19 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--orange); outlin
 .marketplaces { position: absolute; right: 1.3rem; top: 22%; bottom: 16%; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; }
 .marketplaces span { padding: .55rem .7rem; background: var(--paper); border: 2px solid var(--ink); border-radius: 3px; font-size: .875rem; line-height: 1.35; font-weight: 700; }
 
+.register-board { grid-column: 7 / 13; min-height: 520px; display: grid; grid-template-rows: auto 1fr auto; padding: clamp(1.4rem, 3vw, 2.4rem); color: var(--white); background: #24313a; border-radius: var(--radius); box-shadow: 12px 18px 34px rgba(16,24,32,.15); }
+.register-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid #61707a; }
+.register-head span { padding: .35rem .55rem; color: var(--ink); background: var(--white); border-radius: 3px; font-size: .875rem; font-weight: 700; }
+.register-screen { align-self: center; display: grid; gap: .75rem; padding: 1.2rem; color: var(--ink); background: var(--white); border-radius: 4px; }
+.sale-row { display: grid; grid-template-columns: 1fr auto; gap: 1rem; padding: 1rem; background: #e7edf0; border-radius: 3px; }
+.sale-row.muted { color: var(--ink-soft); background: var(--paper); }
+.sale-row b { font-size: .875rem; }
+.sale-total { display: grid; gap: .35rem; margin-top: .6rem; padding: 1.2rem 1rem; color: var(--white); background: var(--cobalt); border-radius: 3px; }
+.sale-total strong { font-size: clamp(1.5rem, 2.4vw, 2.3rem); line-height: 1.05; }
+.register-access { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .75rem; padding-top: 1rem; border-top: 1px solid #61707a; }
+.register-access i { width: 12px; height: 12px; border-radius: 50%; background: var(--orange); }
+.register-access b { color: #c3cdd2; font-size: .875rem; }
+
 .forum-window { grid-column: 7 / 13; min-height: 500px; overflow: hidden; background: var(--white); border: 2px solid var(--ink); border-radius: var(--radius); box-shadow: 12px 18px 34px rgba(16,24,32,.15); }
 .window-bar { min-height: 48px; display: flex; align-items: center; gap: .4rem; padding: .7rem 1rem; color: var(--white); background: var(--ink); }
 .window-bar span { width: 10px; height: 10px; border-radius: 50%; background: var(--rule); }
@@ -188,7 +195,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--orange); outlin
 .about li { display: grid; grid-template-columns: 42% 1fr; gap: 1rem; padding: 1.2rem 0; border-bottom: 1px solid var(--rule); }
 .about li span { color: var(--ink-soft); }
 
-.closing, .contact { padding: clamp(6rem, 11vw, 11rem) max(4vw, calc((100vw - 1440px) / 2)); color: var(--white); background: var(--cobalt); }
+.closing, .contact { padding-block: clamp(6rem, 11vw, 11rem); padding-inline: max(4vw, calc((100vw - 1440px) / 2)); color: var(--white); background: var(--cobalt); }
 .closing > p, .contact > p { max-width: 40ch; margin: 0 0 2rem; font-size: 1.1rem; }
 .closing h2, .contact h2 { max-width: 14ch; margin: 0; font-size: clamp(2.6rem, 5.6vw, 5.8rem); line-height: .95; letter-spacing: -.035em; font-variation-settings: "wdth" 86; }
 
@@ -206,7 +213,7 @@ footer p { font-weight: 750; }
   .section-intro p { max-width: 54ch; }
   .project { min-height: 0; grid-template-columns: 1fr; gap: 3rem; }
   .project-copy, .project-ebha .project-copy, .project-finance .project-copy,
-  .system-panel, .commerce-flow, .forum-window, .finance-board { grid-column: 1; }
+  .system-panel, .commerce-flow, .forum-window, .register-board, .finance-board { grid-column: 1; }
   .project-ebha .commerce-flow, .project-finance .finance-board { order: 2; }
   .project-ebha .project-copy, .project-finance .project-copy { order: 1; }
   .about { grid-template-columns: 1fr; gap: 3rem; }
@@ -220,22 +227,19 @@ footer p { font-weight: 750; }
   .site-header nav a:nth-child(2) { display: none; }
   .brand > span:last-child { display: none; }
   .hero { padding-top: 2.5rem; gap: 3rem; }
-  .hero h1 { font-size: clamp(3.4rem, 17vw, 5rem); }
+  .hero h1 { font-size: clamp(3rem, 13.5vw, 4.2rem); overflow-wrap: anywhere; }
   .hero-copy > p { margin-top: 1.5rem; }
-  .patchbay { min-height: auto; padding: 0 1rem 1rem; }
-  .patchbay-head { margin: 0 -1rem; }
-  .cables, .source-stack, .destination-stack { display: none; }
-  .route-controls { position: static; display: grid; gap: .7rem; margin-top: 1rem; }
-  .route-controls a { min-height: 62px; padding: .75rem; position: relative; }
-  .route-controls a::before { content: ""; position: absolute; top: 50%; right: .8rem; width: 10px; height: 10px; border-radius: 50%; background: var(--cobalt); transform: translateY(-50%); }
-  .route-controls li:nth-child(2) a::before { background: var(--orange); }
-  .route-controls li:nth-child(3) a::before { background: var(--green); }
-  .route-controls li:nth-child(4) a::before { background: #a7b9ff; }
+  .patchbay { min-height: auto; }
+  .route-controls { grid-template-columns: 1fr; gap: 1px; padding: .8rem; }
+  .route-controls a { min-height: 96px; padding: .85rem; }
+  .route-controls a::before { top: .85rem; right: .85rem; width: 10px; height: 10px; }
   .section-intro { padding: 5rem 0 3rem; }
   .section-intro h2, .about h2, .closing h2, .contact h2 { font-size: clamp(2.6rem, 13vw, 4rem); }
   .project { padding: 4.5rem 0; }
-  .project-copy h3 { font-size: clamp(2.7rem, 14vw, 4.2rem); }
-  .system-panel, .commerce-flow, .finance-board { min-height: 440px; padding: 1.4rem; }
+  .project-copy h3 { font-size: clamp(2.7rem, 14vw, 4.2rem); overflow-wrap: anywhere; }
+  .register-access { grid-template-columns: auto 1fr; }
+  .register-access b { grid-column: 2; }
+  .system-panel, .commerce-flow, .register-board, .finance-board { min-height: 440px; padding: 1.4rem; }
   .signal, .signal.large { width: 88%; }
   .signal.accent { width: 78%; }
   .print-object { width: 165px; height: 165px; transform: translateX(-34px) rotate(-8deg); }
