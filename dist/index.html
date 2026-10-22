@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lincoln Studio BR — Sistemas que conversam</title>
+  <meta name="description" content="Portfólio de Lincoln: jogos, comunidades, e-commerce e produtos financeiros conectados por integrações reais.">
+  <link rel="canonical" href="https://www.lincolnstudiobr.com/">
+  <meta name="theme-color" content="#eef2f3">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Lincoln Studio BR — Sistemas que conversam">
+  <meta property="og:description" content="Quatro projetos. Uma especialidade: conectar sistemas e tornar fluxos complexos compreensíveis.">
+  <meta property="og:url" content="https://www.lincolnstudiobr.com/">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"ProfilePage","name":"Lincoln Studio BR — Portfólio","url":"https://www.lincolnstudiobr.com/","inLanguage":"pt-BR","mainEntity":{"@type":"Person","name":"Lincoln","url":"https://www.lincolnstudiobr.com/"}}
+  </script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="Lincoln Studio BR, voltar ao início">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>Lincoln Studio</span>
+    </a>
+    <nav aria-label="Navegação principal">
+      <a href="#projetos">Projetos</a>
+      <a href="#sobre">Sobre</a>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title">Eu construo<br>sistemas que<br><span>conversam.</span></h1>
+        <p>Do servidor ao fórum. Da fabricação ao marketplace. Da conta bancária à visão do que acontece agora.</p>
+        <a class="primary-action" href="#projetos">Ver os sistemas <span class="icon-down" aria-hidden="true"></span></a>
+      </div>
+
+      <div class="patchbay" aria-label="Mapa interativo dos projetos">
+        <div class="patchbay-head">
+          <strong>Mapa de integrações</strong>
+          <span id="route-status" aria-live="polite">Selecione um projeto</span>
+        </div>
+        <svg class="cables" viewBox="0 0 500 540" aria-hidden="true" preserveAspectRatio="none">
+          <path class="cable cable-hype" d="M70 95 C180 95, 170 184, 270 184 S360 112, 430 112"/>
+          <path class="cable cable-ebha" d="M70 221 C165 221, 185 291, 278 291 S360 245, 430 245"/>
+          <path class="cable cable-forum" d="M70 347 C170 347, 170 184, 270 184 S360 378, 430 378"/>
+          <path class="cable cable-finance" d="M70 473 C160 473, 220 424, 300 424 S370 475, 430 475"/>
+        </svg>
+        <div class="source-stack" aria-hidden="true">
+          <span>SA:MP</span><span>3D</span><span>Web</span><span>Conta</span>
+        </div>
+        <div class="destination-stack" aria-hidden="true">
+          <span>MySQL + Fórum</span><span>Marketplaces</span><span>Gamemode</span><span>Visão financeira</span>
+        </div>
+        <ul class="route-controls" aria-label="Projetos">
+          <li><a href="#hype-rp" data-route="hype"><b>Conectar</b><span>Hype Universo RP</span></a></li>
+          <li><a href="#ebha-store" data-route="ebha"><b>Operar</b><span>EBHA Store</span></a></li>
+          <li><a href="#hype-forum" data-route="forum"><b>Sincronizar</b><span>Fórum Hype</span></a></li>
+          <li><a href="#finance-app" data-route="finance"><b>Acompanhar</b><span>App financeiro</span></a></li>
+        </ul>
+      </div>
+
+      <p class="hero-foot">Quatro projetos conectados por uma mesma forma de pensar: entender o fluxo inteiro antes de construir a interface.</p>
+    </section>
+
+    <section class="projects" id="projetos" aria-labelledby="projects-title">
+      <header class="section-intro">
+        <h2 id="projects-title">Projetos que começam onde uma ferramenta termina.</h2>
+        <p>Cada capítulo mostra uma conexão diferente — e o que precisou existir entre as pontas.</p>
+      </header>
+
+      <article class="project project-hype" id="hype-rp" data-project="hype">
+        <div class="project-copy">
+          <h3>Hype Universo RP</h3>
+          <p class="project-lead">Um servidor de SA:MP conectado ao seu fórum por MySQL.</p>
+          <p>A gamemode e a comunidade não vivem em ilhas. O projeto une a experiência dentro do jogo à estrutura do fórum, mantendo dados e participação no mesmo ecossistema.</p>
+          <dl class="project-facts">
+            <div><dt>Origem</dt><dd>Servidor SA:MP</dd></div>
+            <div><dt>Ponte</dt><dd>MySQL</dd></div>
+            <div><dt>Destino</dt><dd>Fórum da comunidade</dd></div>
+          </dl>
+        </div>
+        <div class="system-panel system-panel-hype" aria-label="Fluxo do Hype Universo RP">
+          <div class="signal large">Jogador <small>ação na gamemode</small></div>
+          <div class="connector"><span>dados persistidos</span></div>
+          <div class="signal accent">MySQL <small>ponte compartilhada</small></div>
+          <div class="connector"><span>contexto sincronizado</span></div>
+          <div class="signal">Fórum <small>comunidade conectada</small></div>
+        </div>
+      </article>
+
+      <article class="project project-ebha" id="ebha-store" data-project="ebha">
+        <div class="commerce-flow" aria-label="Fluxo operacional da EBHA Store">
+          <div class="print-object" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <p class="flow-caption">Objeto físico</p>
+          <div class="market-line" aria-hidden="true"></div>
+          <div class="marketplaces"><span>UpSeller</span><span>Shopee</span><span>Mercado Livre</span></div>
+        </div>
+        <div class="project-copy">
+          <h3>EBHA Store</h3>
+          <p class="project-lead">Uma operação de objetos impressos em 3D conectada aos canais onde as pessoas compram.</p>
+          <p>O e-commerce integra a produção própria ao UpSeller e às lojas oficiais da marca na Shopee e no Mercado Livre. O produto atravessa fabricação, catálogo e venda sem perder o fio da operação.</p>
+          <dl class="project-facts">
+            <div><dt>Produto</dt><dd>Impressões 3D</dd></div>
+            <div><dt>Operação</dt><dd>UpSeller</dd></div>
+            <div><dt>Canais</dt><dd>Shopee + Mercado Livre</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="project project-forum" id="hype-forum" data-project="forum">
+        <div class="project-copy">
+          <h3>Fórum do Hype Universo RP</h3>
+          <p class="project-lead">Um site que estende a gamemode para além do servidor.</p>
+          <p>O fórum é a camada web do mesmo universo: uma interface conectada à gamemode para transformar dados do jogo em contexto útil para a comunidade.</p>
+          <dl class="project-facts">
+            <div><dt>Interface</dt><dd>Web</dd></div>
+            <div><dt>Integração</dt><dd>Gamemode</dd></div>
+            <div><dt>Ecossistema</dt><dd>Hype Universo RP</dd></div>
+          </dl>
+        </div>
+        <div class="forum-window" aria-label="Representação da conexão entre fórum e gamemode">
+          <div class="window-bar"><span></span><span></span><span></span><b>Comunidade Hype</b></div>
+          <div class="forum-body">
+            <div class="avatar-grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="sync-core">
+              <span>Gamemode</span>
+              <div class="pulse-line" aria-hidden="true"><i></i></div>
+              <span>Fórum</span>
+            </div>
+            <p>Um dado muda de contexto,<br>não perde significado.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="project project-finance" id="finance-app" data-project="finance">
+        <div class="finance-board" aria-label="Conceito do aplicativo financeiro para Android">
+          <div class="finance-header"><span>Agora</span><strong>Visão financeira</strong></div>
+          <div class="ledger">
+            <div class="ledger-row income"><i></i><span>Receitas</span><b>entrada</b></div>
+            <div class="ledger-row transfer"><i></i><span>Transferências</span><b>movimento</b></div>
+            <div class="ledger-row debt"><i></i><span>Dívidas</span><b>compromisso</b></div>
+          </div>
+          <div class="now-line"><span></span><b>em tempo real</b></div>
+        </div>
+        <div class="project-copy">
+          <h3>Aplicativo financeiro para Android</h3>
+          <p class="project-lead">Um conceito para transformar movimentações bancárias em uma visão clara do presente.</p>
+          <p>O aplicativo conecta a conta do usuário e organiza transferências, dívidas e receitas em tempo real. O objetivo é tornar o fluxo financeiro visível na tela, sem depender de atualizações manuais.</p>
+          <p class="status-note">Projeto sem nome · conceito em desenvolvimento</p>
+          <dl class="project-facts">
+            <div><dt>Plataforma</dt><dd>Android</dd></div>
+            <div><dt>Entrada</dt><dd>Conta bancária</dd></div>
+            <div><dt>Leitura</dt><dd>Movimentações em tempo real</dd></div>
+          </dl>
+        </div>
+      </article>
+    </section>
+
+    <section class="about" id="sobre" aria-labelledby="about-title">
+      <div>
+        <h2 id="about-title">Construir a peça é só metade do trabalho.</h2>
+      </div>
+      <div class="about-copy">
+        <p>Meu trabalho começa entendendo o caminho completo: de onde a informação vem, o que precisa acontecer no meio e como o resultado chega até uma pessoa.</p>
+        <ol>
+          <li><b>Entender o fluxo</b><span>Mapear pessoas, dados e operação antes da tela.</span></li>
+          <li><b>Conectar as partes</b><span>Fazer serviços e contextos diferentes funcionarem como um sistema.</span></li>
+          <li><b>Tornar visível</b><span>Transformar complexidade em uma experiência clara.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title">
+      <p>Quatro projetos, uma forma de trabalhar.</p>
+      <h2 id="closing-title">Quando as peças conversam, o produto fica inteiro.</h2>
+    </section>
+  </main>
+
+  <footer>
+    <p>Lincoln Studio BR</p>
+    <a href="#inicio">Voltar ao início <span class="icon-up" aria-hidden="true"></span></a>
+  </footer>
+</body>
+</html>
