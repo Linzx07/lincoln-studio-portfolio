@@ -1,61 +1,60 @@
-const patchbay = document.querySelector('.patchbay');
-const routeStatus = document.querySelector('#route-status');
-const routes = [...document.querySelectorAll('[data-route]')];
-function activateRoute(route) {
-  if (!patchbay) return;
-  patchbay.dataset.active = route.dataset.route;
-  routes.forEach((item) => item.setAttribute('aria-current', item === route ? 'true' : 'false'));
-  if (routeStatus) routeStatus.textContent = `${route.querySelector('b').textContent}: ${route.querySelector('span').textContent}`;
+const themeToggle = document.querySelector('#theme-toggle');
+const themeMeta = document.querySelector('#theme-color-meta');
+function setTheme(theme, persist = true) {
+  const dark = theme === 'dark';
+  document.body.dataset.theme = dark ? 'dark' : 'light';
+  if (themeToggle) {
+    themeToggle.setAttribute('aria-pressed', String(dark));
+    themeToggle.setAttribute('aria-label', dark ? 'Ativar tema claro' : 'Ativar tema escuro');
+    const label = themeToggle.querySelector('.theme-label');
+    if (label) label.textContent = dark ? 'Tema claro' : 'Tema escuro';
+  }
+  if (themeMeta) themeMeta.content = dark ? '#101a1c' : '#f2f5f3';
+  if (persist) {
+    try { localStorage.setItem('portfolio-theme', dark ? 'dark' : 'light'); } catch {}
+  }
 }
-routes.forEach((route) => {
-  route.addEventListener('mouseenter', () => activateRoute(route));
-  route.addEventListener('focus', () => activateRoute(route));
-  route.addEventListener('click', () => activateRoute(route));
-});
-if (routes[0]) activateRoute(routes[0]);
-if ('IntersectionObserver' in window) {
-  const sections = [...document.querySelectorAll('[data-project]')];
-  const observer = new IntersectionObserver((entries) => {
-    const visible = entries.find((entry) => entry.isIntersecting);
-    if (!visible) return;
-    const route = routes.find((item) => item.dataset.route === visible.target.dataset.project);
-    if (route) activateRoute(route);
-  }, { rootMargin: '-35% 0px -50%' });
-  sections.forEach((section) => observer.observe(section));
-}
+let initialTheme = 'light';
+try { if (localStorage.getItem('portfolio-theme') === 'dark') initialTheme = 'dark'; } catch {}
+setTheme(initialTheme, false);
+themeToggle?.addEventListener('click', () => setTheme(document.body.dataset.theme === 'dark' ? 'light' : 'dark'));
 
 const projectDetails = {
   cassola: {
-    category: 'Experiência CLT', status: 'Site institucional', title: 'Cassola Ambiental',
+    category: 'Experiência profissional como CLT', status: 'Site institucional', title: 'Cassola Ambiental',
     summary: 'Site institucional para uma empresa de logística reversa e reciclagem.',
-    contribution: 'Criei o site enquanto trabalhava na empresa como CLT. As credenciais de acesso pertencem à empresa.',
-    description: 'A apresentação organiza serviços, rastreabilidade ambiental e iniciativas de educação e impacto. As imagens mostram partes do site público.',
+    contribution: 'Criei o site enquanto trabalhava na empresa como CLT. As credenciais e a gestão do site pertencem à empresa.',
+    description: 'A página organiza as informações sobre logística reversa, rastreabilidade ambiental, educação e projetos. As primeiras imagens mostram a homepage pública e elementos visuais do site.',
     technologies: ['Tecnologias não informadas'], link: 'https://cassolaambiental.com/',
     images: [
-      ['assets/gallery/cassola/hero-mural.webp', 'Apresentação de iniciativas ambientais'],
-      ['assets/gallery/cassola/hero-desmonte.webp', 'Conteúdo sobre serviços ambientais'],
+      ['assets/covers/cassola-homepage.jpg', 'Captura da homepage pública da Cassola Ambiental'],
+      ['assets/gallery/cassola/hero-mural.webp', 'Mural da Cassola Ambiental'],
+      ['assets/gallery/cassola/hero-desmonte.webp', 'Estação de desmonte de eletrônicos'],
       ['assets/gallery/cassola/ecobot-mascot.webp', 'Mascote Ecobot usado no site']
     ]
   },
   aurum: {
-    category: 'Experiência CLT', status: 'Site institucional', title: 'Aurum Tech',
+    category: 'Experiência profissional como CLT', status: 'Site institucional', title: 'Aurum Tech',
     summary: 'Site institucional criado dentro da empresa durante minha atuação como CLT.',
-    contribution: 'Desenvolvi o site da empresa. As credenciais de acesso são mantidas pela própria empresa.',
-    description: 'A página apresenta a atuação da Aurum Tech em materiais críticos e mineração urbana. As imagens mostram elementos publicados no site.',
+    contribution: 'Desenvolvi o site da empresa. As credenciais e a gestão do site ficam com a própria empresa.',
+    description: 'A página apresenta a atuação da Aurumtech em materiais críticos e mineração urbana. As imagens mostram a homepage pública, a fachada e elementos publicados no site.',
     technologies: ['Tecnologias não informadas'], link: 'https://aurumtech.eco.br/',
     images: [
-      ['assets/gallery/aurum/hero-fachada.webp', 'Imagem de apresentação do site'],
-      ['assets/gallery/aurum/reactors-array.webp', 'Imagem de equipamentos e processo'],
-      ['assets/gallery/aurum/mineral-site.webp', 'Imagem relacionada à operação mineral']
+      ['assets/covers/aurum-homepage.jpg', 'Captura da homepage pública da Aurumtech'],
+      ['assets/gallery/aurum/hero-fachada.webp', 'Fachada da Aurumtech'],
+      ['assets/gallery/aurum/reactors-array.webp', 'Fileira de reatores da planta'],
+      ['assets/gallery/aurum/mineral-site.webp', 'Conteúdo da página sobre materiais estratégicos']
     ]
   },
   hype: {
-    category: 'Projeto autônomo', status: 'Servidor e fórum', title: 'Hype Universo RP + Fórum',
-    summary: 'Ecossistema de roleplay com servidor SA:MP, fórum e loja para a comunidade.',
-    contribution: 'Projeto autônomo que reúne o universo do servidor e a plataforma web da comunidade.',
-    description: 'O fórum foi estruturado em Next.js com áreas de discussão, tópicos, respostas e recursos de comunidade. O projeto prevê integração de dados com MySQL. A galeria inclui identidade visual e mapa do universo.',
+    category: 'Projeto autônomo', status: 'Fórum e comunidade', title: 'Hype Universo RP + Fórum',
+    summary: 'Experiência web para a comunidade do Hype Universo RP, com fórum, mapa e loja.',
+    contribution: 'Projeto autônomo. Desenvolvi o fórum e a experiência web da comunidade.',
+    description: 'O fórum foi construído em Next.js com áreas de discussão, tópicos, respostas e recursos de comunidade. A página pública informa que a conexão com o servidor está em preparação. As imagens mostram o fórum e a identidade do projeto, não os sistemas dentro da gamemode.',
     technologies: ['Next.js', 'React', 'TypeScript', 'MySQL'],
+    note: 'As capturas da gamemode serão adicionadas manualmente por mim. Esta galeria mostra apenas o fórum, a marca e o mapa.',
     images: [
+      ['assets/covers/hype-forum-homepage.jpg', 'Captura da homepage pública do Hype Universo RP e Fórum'],
       ['assets/gallery/hype/hype-banner.webp', 'Banner do Hype Universo RP'],
       ['assets/gallery/hype/hype-logo.webp', 'Símbolo do Hype Universo RP'],
       ['assets/gallery/hype/hype-wordmark.png', 'Identidade visual do servidor'],
@@ -63,28 +62,31 @@ const projectDetails = {
     ]
   },
   ebha: {
-    category: 'Projeto autônomo', status: 'E-commerce em desenvolvimento', title: 'EBHA Store',
-    summary: 'Loja online para produtos de papelaria, brinquedos educativos e impressão 3D.',
-    contribution: 'Desenvolvi a loja do zero, com catálogo e arquitetura preparada para organizar mais de uma operação de venda.',
-    description: 'A aplicação usa dados de demonstração para o catálogo. A integração real com a API do UpSeller ainda aguarda a definição do cliente sobre como deseja conectar a operação.',
+    category: 'Projeto autônomo', status: 'Loja em desenvolvimento', title: 'EBHA Store',
+    summary: 'E-commerce para produtos de papelaria, brinquedos educativos e impressão 3D.',
+    contribution: 'Desenvolvi a loja do zero, com catálogo e arquitetura preparada para organizar mais de uma loja.',
+    description: 'A captura mostra uma prévia em ambiente de desenvolvimento. O catálogo e o conteúdo usam dados de demonstração. A integração real com a API do UpSeller aguarda a definição do cliente sobre como deseja conectar a operação.',
     technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
-    note: 'As imagens reais dos produtos ainda não foram fornecidas. A ilustração do projeto é um esquema visual, não uma fotografia de produto.'
+    note: 'A imagem mostra a interface do projeto, não uma loja em produção. Os produtos e benefícios exibidos são demonstrativos.' ,
+    images: [
+      ['assets/covers/ebha-store-preview.jpg', 'Prévia da homepage em ambiente de desenvolvimento, com dados demonstrativos']
+    ]
   },
   register: {
-    category: 'Projeto autônomo', status: 'Em definição', title: 'Registradora para MEIs',
-    summary: 'Conceito de sistema de caixa local para cadastro de produtos e cálculo de vendas.',
+    category: 'Projeto autônomo', status: 'Conceito em definição', title: 'Registradora para MEIs',
+    summary: 'Conceito de caixa local para cadastro de produtos e cálculo de vendas.',
     contribution: 'Projeto autônomo em definição. O escopo conhecido prevê uma operação simples para pequenos negócios.',
-    description: 'A proposta prevê registrar produtos, adicionar itens à venda e atualizar o total automaticamente. O armazenamento local com SQLite faz parte do escopo previsto.',
+    description: 'A proposta é registrar produtos, adicionar itens à venda e atualizar o total automaticamente. O armazenamento local com SQLite faz parte do escopo previsto.',
     technologies: ['Python', 'SQLite'],
-    note: 'A imagem é um esquema conceitual, pois as telas finais ainda não foram fornecidas.'
+    note: 'A prévia visual é um esquema conceitual. As telas finais ainda não foram fornecidas.'
   },
   finance: {
-    category: 'Projeto autônomo', status: 'Em desenvolvimento', title: 'Aplicativo financeiro para Android',
-    summary: 'Conceito de aplicativo para reunir receitas, transferências e dívidas em uma visão financeira.',
+    category: 'Projeto autônomo', status: 'Conceito em desenvolvimento', title: 'Aplicativo financeiro para Android',
+    summary: 'Conceito para reunir receitas, transferências e dívidas em uma visão financeira.',
     contribution: 'Projeto autônomo em desenvolvimento. Nome, implementação e integração bancária ainda estão sendo definidos.',
     description: 'A proposta é facilitar a leitura das movimentações financeiras em um só lugar. A conexão bancária ainda é uma ideia do projeto, sem integração confirmada.',
     technologies: ['Tecnologias ainda não definidas'],
-    note: 'A imagem é um esquema conceitual, pois as telas finais ainda não foram fornecidas.'
+    note: 'A prévia visual é um esquema conceitual. As telas finais ainda não foram fornecidas.'
   }
 };
 
@@ -99,10 +101,7 @@ function renderImage(src, label, selected) {
   image.alt = label;
   image.hidden = false;
   caption.textContent = label;
-  thumbs.querySelectorAll('button').forEach((button) => {
-    const active = button === selected;
-    button.setAttribute('aria-pressed', String(active));
-  });
+  thumbs.querySelectorAll('button').forEach((button) => button.setAttribute('aria-pressed', String(button === selected)));
 }
 function openProject(key, trigger) {
   const project = projectDetails[key];
@@ -148,9 +147,7 @@ function openProject(key, trigger) {
   dialog.showModal();
   closeDialog.focus();
 }
-document.querySelectorAll('[data-project-open]').forEach((button) => {
-  button.addEventListener('click', () => openProject(button.dataset.projectOpen, button));
-});
+document.querySelectorAll('[data-project-open]').forEach((button) => button.addEventListener('click', () => openProject(button.dataset.projectOpen, button)));
 closeDialog?.addEventListener('click', () => dialog.close());
 dialog?.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
 dialog?.addEventListener('close', () => lastTrigger?.focus());

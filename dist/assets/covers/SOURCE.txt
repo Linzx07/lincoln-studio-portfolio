@@ -1,0 +1,5 @@
+/* Source captures: public project homepages viewed and captured on 2026-10-27. */
+Cassola homepage: https://cassolaambiental.com/ (real public homepage capture, 1440x960)
+Aurum homepage: https://aurumtech.eco.br/ (real public homepage capture, 1440x960)
+Hype forum homepage: https://hype-universo-rp.lincolnbcfreitas.workers.dev/ (real public forum homepage capture, 1440x960; not a gamemode screenshot)
+EBHA Store preview: http://127.0.0.1:5176/ (local development homepage capture, 1440x960; demo catalogue images and copy)
