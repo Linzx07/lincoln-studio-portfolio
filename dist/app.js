@@ -89,21 +89,21 @@ const projectDetails = {
   },
   register: {
     accent: '#247a66', gradient: 'linear-gradient(105deg, #247a66, #9dc94f)',
-    category: 'Projeto autônomo', status: 'Conceito em definição', title: 'Registradora para MEIs',
-    summary: 'Conceito de caixa local para cadastro de produtos e cálculo de vendas.',
-    contribution: 'Projeto autônomo em definição. O escopo conhecido prevê uma operação simples para pequenos negócios.',
-    description: 'A proposta é registrar produtos, adicionar itens à venda e atualizar o total automaticamente. O armazenamento local com SQLite faz parte do escopo previsto.',
-    technologies: ['Python', 'SQLite'],
-    note: 'A prévia visual é um esquema conceitual. As telas finais ainda não foram fornecidas.'
+    category: 'Projeto autônomo', status: 'A iniciar em breve', title: 'Registradora de Caixa e Administração',
+    summary: 'Projeto autoral que começarei em breve.',
+    contribution: 'A implementação ainda não começou. Minha participação será definida conforme o escopo ganhar forma.',
+    description: 'O projeto terá foco em registradora de caixa e administração. As funcionalidades e as decisões técnicas serão definidas durante o desenvolvimento.',
+    technologies: ['A definir'],
+    note: 'Esta é uma prévia conceitual. O trabalho ainda não foi iniciado.'
   },
-  finance: {
-    accent: '#4059c8', gradient: 'linear-gradient(105deg, #4059c8, #4ebdd7)',
-    category: 'Projeto autônomo', status: 'Conceito em desenvolvimento', title: 'Aplicativo financeiro para Android',
-    summary: 'Conceito para reunir receitas, transferências e dívidas em uma visão financeira.',
-    contribution: 'Projeto autônomo em desenvolvimento. Nome, implementação e integração bancária ainda estão sendo definidos.',
-    description: 'A proposta é facilitar a leitura das movimentações financeiras em um só lugar. A conexão bancária ainda é uma ideia do projeto, sem integração confirmada.',
+  printx: {
+    accent: '#355caa', gradient: 'linear-gradient(105deg, #355caa, #77a9ed)',
+    category: 'Projeto autônomo', status: 'Ainda não iniciado', title: 'PrintX',
+    summary: 'Projeto planejado para monitorar e controlar custos de impressão 3D.',
+    contribution: 'O desenvolvimento ainda não começou. Esta ficha será ampliada quando eu iniciar o projeto.',
+    description: 'A ideia do PrintX é acompanhar custos relacionados à impressão 3D. As telas, funcionalidades e decisões técnicas serão documentadas durante o desenvolvimento.',
     technologies: ['Tecnologias ainda não definidas'],
-    note: 'A prévia visual é um esquema conceitual. As telas finais ainda não foram fornecidas.'
+    note: 'A imagem é uma identificação visual provisória. Ainda não há interface funcional.'
   }
 };
 
