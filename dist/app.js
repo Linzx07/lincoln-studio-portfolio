@@ -9,23 +9,35 @@ function setTheme(theme, persist = true) {
     const label = themeToggle.querySelector('.theme-label');
     if (label) label.textContent = dark ? 'Tema claro' : 'Tema escuro';
   }
-  if (themeMeta) themeMeta.content = dark ? '#101a1c' : '#f2f5f3';
+  if (themeMeta) themeMeta.content = dark ? '#101a29' : '#f2f5f3';
   if (persist) {
     try { localStorage.setItem('portfolio-theme', dark ? 'dark' : 'light'); } catch {}
   }
 }
-let initialTheme = 'light';
-try { if (localStorage.getItem('portfolio-theme') === 'dark') initialTheme = 'dark'; } catch {}
+const systemTheme = window.matchMedia?.('(prefers-color-scheme: dark)');
+let savedTheme = null;
+try {
+  const preference = localStorage.getItem('portfolio-theme');
+  if (preference === 'light' || preference === 'dark') savedTheme = preference;
+} catch {}
+let initialTheme = savedTheme || (systemTheme?.matches ? 'dark' : 'light');
 setTheme(initialTheme, false);
-themeToggle?.addEventListener('click', () => setTheme(document.body.dataset.theme === 'dark' ? 'light' : 'dark'));
+systemTheme?.addEventListener('change', (event) => {
+  if (!savedTheme) setTheme(event.matches ? 'dark' : 'light', false);
+});
+themeToggle?.addEventListener('click', () => {
+  savedTheme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+  setTheme(savedTheme);
+});
 
 const projectDetails = {
   cassola: {
+    accent: '#357a54', gradient: 'linear-gradient(105deg, #357a54, #98c96a)',
     category: 'Experiência profissional como CLT', status: 'Site institucional', title: 'Cassola Ambiental',
     summary: 'Site institucional para uma empresa de logística reversa e reciclagem.',
     contribution: 'Criei o site enquanto trabalhava na empresa como CLT. As credenciais e a gestão do site pertencem à empresa.',
     description: 'A página organiza as informações sobre logística reversa, rastreabilidade ambiental, educação e projetos. As primeiras imagens mostram a homepage pública e elementos visuais do site.',
-    technologies: ['Tecnologias não informadas'], link: 'https://cassolaambiental.com/',
+    technologies: ['TypeScript', 'Lovable'], link: 'https://cassolaambiental.com/',
     images: [
       ['assets/covers/cassola-homepage.jpg', 'Captura da homepage pública da Cassola Ambiental'],
       ['assets/gallery/cassola/hero-mural.webp', 'Mural da Cassola Ambiental'],
@@ -34,6 +46,7 @@ const projectDetails = {
     ]
   },
   aurum: {
+    accent: '#a66c18', gradient: 'linear-gradient(105deg, #a66c18, #eed078)',
     category: 'Experiência profissional como CLT', status: 'Site institucional', title: 'Aurum Tech',
     summary: 'Site institucional criado dentro da empresa durante minha atuação como CLT.',
     contribution: 'Desenvolvi o site da empresa. As credenciais e a gestão do site ficam com a própria empresa.',
@@ -47,6 +60,7 @@ const projectDetails = {
     ]
   },
   hype: {
+    accent: '#7540bf', gradient: 'linear-gradient(105deg, #7540bf, #e46aaa)',
     category: 'Projeto autônomo', status: 'Fórum e comunidade', title: 'Hype Universo RP + Fórum',
     summary: 'Experiência web para a comunidade do Hype Universo RP, com fórum, mapa e loja.',
     contribution: 'Projeto autônomo. Desenvolvi o fórum e a experiência web da comunidade.',
@@ -62,6 +76,7 @@ const projectDetails = {
     ]
   },
   ebha: {
+    accent: '#287cae', gradient: 'linear-gradient(105deg, #287cae, #5bd0c6)',
     category: 'Projeto autônomo', status: 'Loja em desenvolvimento', title: 'EBHA Store',
     summary: 'E-commerce para produtos de papelaria, brinquedos educativos e impressão 3D.',
     contribution: 'Desenvolvi a loja do zero, com catálogo e arquitetura preparada para organizar mais de uma loja.',
@@ -73,6 +88,7 @@ const projectDetails = {
     ]
   },
   register: {
+    accent: '#247a66', gradient: 'linear-gradient(105deg, #247a66, #9dc94f)',
     category: 'Projeto autônomo', status: 'Conceito em definição', title: 'Registradora para MEIs',
     summary: 'Conceito de caixa local para cadastro de produtos e cálculo de vendas.',
     contribution: 'Projeto autônomo em definição. O escopo conhecido prevê uma operação simples para pequenos negócios.',
@@ -81,6 +97,7 @@ const projectDetails = {
     note: 'A prévia visual é um esquema conceitual. As telas finais ainda não foram fornecidas.'
   },
   finance: {
+    accent: '#4059c8', gradient: 'linear-gradient(105deg, #4059c8, #4ebdd7)',
     category: 'Projeto autônomo', status: 'Conceito em desenvolvimento', title: 'Aplicativo financeiro para Android',
     summary: 'Conceito para reunir receitas, transferências e dívidas em uma visão financeira.',
     contribution: 'Projeto autônomo em desenvolvimento. Nome, implementação e integração bancária ainda estão sendo definidos.',
@@ -107,6 +124,8 @@ function openProject(key, trigger) {
   const project = projectDetails[key];
   if (!project || !dialog) return;
   lastTrigger = trigger;
+  dialog.style.setProperty('--project-accent', project.accent || '#17396f');
+  dialog.style.setProperty('--project-gradient', project.gradient || 'linear-gradient(105deg, #17396f, #6ca2e8)');
   document.querySelector('#detail-category').textContent = project.category;
   document.querySelector('#detail-status').textContent = project.status;
   document.querySelector('#detail-title').textContent = project.title;
