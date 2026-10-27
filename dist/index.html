@@ -14,6 +14,7 @@
   <meta property="og:url" content="https://lincoln-studio-portfolio.lincolnbcfreitas.workers.dev/">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/assets/brand/lincoln-studio-mark.svg" as="image" type="image/svg+xml">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,12 +29,13 @@
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <header class="site-header">
     <a class="brand" href="#inicio" aria-label="Lincoln Studio BR, voltar ao início">
-      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <img class="brand-mark" src="/assets/brand/lincoln-studio-mark.svg" alt="" width="36" height="36">
       <span>Lincoln Studio</span>
     </a>
     <nav aria-label="Navegação principal">
       <a href="#trajetoria">Minha trajetória</a>
       <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Ativar tema escuro" aria-pressed="false">
         <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
         <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.7 15.1A8.5 8.5 0 0 1 8.9 3.3 8.5 8.5 0 1 0 20.7 15.1Z"/></svg>
@@ -178,8 +180,8 @@
       </div>
     </section>
 
-    <section class="closing" aria-labelledby="closing-title">
-      <div><p class="section-kicker">O que você encontra aqui</p><h2 id="closing-title">Contexto claro. Participação transparente. Trabalho de verdade.</h2></div>
+    <section class="closing" id="contato" aria-labelledby="closing-title">
+      <div class="closing-copy"><p class="section-kicker">Contato</p><h2 id="closing-title">Vamos conversar sobre seu próximo projeto?</h2><p class="contact-intro">Meu portfólio apresenta os projetos e a minha trajetória. Você pode falar comigo por telefone ou e-mail.</p><div class="contact-links" aria-label="Canais de contato"><a class="contact-link" href="mailto:lincolnbcfreitas@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5h18v11H3z"/><path d="m4 7 8 6 8-6"/></svg><span><small>E-mail</small><strong>lincolnbcfreitas@gmail.com</strong></span></a><a class="contact-link" href="tel:+5515981046534"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.3 3.5h3l1.5 4-2 1.7a14 14 0 0 0 5 5l1.7-2 4 1.5v3a2 2 0 0 1-2.2 2A15.5 15.5 0 0 1 5.3 5.7a2 2 0 0 1 2-2.2Z"/></svg><span><small>Telefone</small><strong>(15) 98104-6534</strong></span></a></div></div>
       <a class="primary-action" href="#inicio">Voltar ao início <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V4m-5 5 5-5 5 5"/></svg></a>
     </section>
   </main>
@@ -194,6 +196,6 @@
     </div>
   </dialog>
 
-  <footer><a class="brand" href="#inicio" aria-label="Lincoln Studio BR, voltar ao início"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Lincoln Studio</span></a><p>Portfólio de Lincoln de Campos</p><a href="#projetos">Explorar projetos <span aria-hidden="true">↗</span></a></footer>
+  <footer><a class="brand" href="#inicio" aria-label="Lincoln Studio BR, voltar ao início"><img class="brand-mark" src="/assets/brand/lincoln-studio-mark.svg" alt="" width="36" height="36"><span>Lincoln Studio</span></a><p>Portfólio de Lincoln de Campos</p><a href="#projetos">Explorar projetos <span aria-hidden="true">↗</span></a></footer>
 </body>
 </html>

@@ -3,7 +3,7 @@
   "short_name": "Lincoln Studio",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#eef2f3",
-  "theme_color": "#eef2f3",
+  "background_color": "#f2f5f3",
+  "theme_color": "#2b65a5",
   "icons": [{"src":"/favicon.svg","sizes":"any","type":"image/svg+xml"}]
 }
