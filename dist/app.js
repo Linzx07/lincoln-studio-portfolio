@@ -66,6 +66,7 @@ const projectDetails = {
     contribution: 'Projeto autônomo. Desenvolvi o fórum e a experiência web da comunidade.',
     description: 'O fórum foi construído em Next.js com áreas de discussão, tópicos, respostas e recursos de comunidade. A página pública informa que a conexão com o servidor está em preparação. As imagens mostram o fórum e a identidade do projeto, não os sistemas dentro da gamemode.',
     technologies: ['Next.js', 'React', 'TypeScript', 'MySQL'],
+    link: 'https://hype-universo-rp.lincolnbcfreitas.workers.dev/',
     note: 'As capturas da gamemode serão adicionadas manualmente por mim. Esta galeria mostra apenas o fórum, a marca e o mapa.',
     images: [
       ['assets/covers/hype-forum-homepage.jpg', 'Captura da homepage pública do Hype Universo RP e Fórum'],
@@ -80,8 +81,9 @@ const projectDetails = {
     category: 'Projeto autônomo', status: 'Loja em desenvolvimento', title: 'EBHA Store',
     summary: 'E-commerce para produtos de papelaria, brinquedos educativos e impressão 3D.',
     contribution: 'Desenvolvi a loja do zero, com catálogo e arquitetura preparada para organizar mais de uma loja.',
-    description: 'A captura mostra uma prévia em ambiente de desenvolvimento. O catálogo e o conteúdo usam dados de demonstração. A integração real com a API do UpSeller aguarda a definição do cliente sobre como deseja conectar a operação.',
+    description: 'Esta página está publicada como prévia pública, mas o catálogo e os conteúdos ainda usam dados demonstrativos. A integração com UpSeller aguarda a definição do cliente sobre a forma de conexão.',
     technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
+    link: 'https://ebha.lincolnbcfreitas.workers.dev/',
     note: 'A imagem mostra a interface do projeto, não uma loja em produção. Os produtos e benefícios exibidos são demonstrativos.' ,
     images: [
       ['assets/covers/ebha-store-preview.jpg', 'Prévia da homepage em ambiente de desenvolvimento, com dados demonstrativos']

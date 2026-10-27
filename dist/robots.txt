@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.lincolnstudiobr.com/sitemap.xml
+Sitemap: https://lincoln-studio-portfolio.lincolnbcfreitas.workers.dev/sitemap.xml
