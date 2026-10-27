@@ -44,8 +44,9 @@ body[data-theme="dark"] .brand-mark { filter: brightness(1.35); }
 .site-header nav { display: flex; height: 100%; align-items: center; gap: clamp(1rem, 3.3vw, 3.1rem); }
 .site-header nav > a { color: var(--muted); font-size: .88rem; font-weight: 650; text-decoration: none; transition: color .2s ease; }
 .site-header nav > a:hover { color: var(--brand); }
-.theme-toggle { display: inline-flex; min-height: 40px; align-items: center; gap: .55rem; padding: .45rem .7rem; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); color: var(--ink); font-size: .78rem; font-weight: 650; cursor: pointer; }
-.theme-toggle svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; }
+.theme-toggle { display: inline-flex; width: 40px; min-width: 40px; min-height: 40px; align-items: center; justify-content: center; gap: 0; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: var(--paper); color: var(--ink); cursor: pointer; }
+.theme-toggle:hover { border-color: var(--brand); color: var(--brand); }
+.theme-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; }
 .moon-icon { display: none; }
 body[data-theme="dark"] .sun-icon { display: none; }
 body[data-theme="dark"] .moon-icon { display: block; }
@@ -223,8 +224,7 @@ footer > a:last-child { color: var(--brand); font-weight: 700; text-decoration: 
   .site-header nav { gap: .9rem; }
   .site-header nav > a { font-size: .76rem; }
   .site-header nav > a:first-child { display: none; }
-  .theme-toggle { width: 40px; justify-content: center; padding: .5rem; }
-  .theme-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .theme-toggle { padding: 0; }
   .hero { grid-template-columns: 1fr; gap: 1rem; padding: 3.4rem 0 4.8rem; }
   .hero h1 { max-width: 11ch; font-size: clamp(3rem, 12.5vw, 4.5rem); }
   .hero-intro { max-width: 56ch; font-size: .98rem; }
