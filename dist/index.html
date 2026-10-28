@@ -19,29 +19,34 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=12">
+  <link rel="stylesheet" href="/styles.css?v=14">
   <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"ProfilePage","name":"Lincoln Studio BR | Portfólio","url":"https://lincoln-studio-portfolio.lincolnbcfreitas.workers.dev/","inLanguage":"pt-BR","mainEntity":{"@type":"Person","name":"Lincoln de Campos","url":"https://lincoln-studio-portfolio.lincolnbcfreitas.workers.dev/"}}
   </script>
-  <script src="/app.js" defer></script>
+  <script src="/app.js?v=14" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <header class="site-header">
     <div class="site-header-inner">
-    <a class="brand" href="#inicio" aria-label="Lincoln Studio BR, voltar ao início">
-      <img class="brand-mark" src="/assets/brand/lincoln-studio-mark.svg" alt="" width="36" height="36">
-      <span>Lincoln Studio</span>
-    </a>
-    <nav aria-label="Navegação principal">
-      <a href="#trajetoria">Minha trajetória</a>
-      <a href="#projetos">Projetos</a>
-      <a href="#contato">Contato</a>
+      <a class="brand" href="#inicio" aria-label="Lincoln Studio BR, voltar ao início">
+        <img class="brand-mark" src="/assets/brand/lincoln-studio-mark.svg" alt="" width="36" height="36">
+        <span>Lincoln Studio</span>
+      </a>
+      <nav aria-label="Navegação principal">
+        <div class="nav-links" id="primary-nav-links">
+          <a href="#trajetoria">Minha trajetória</a>
+          <a href="#projetos">Projetos</a>
+          <a href="#contato">Contato</a>
+        </div>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Ativar tema escuro" aria-pressed="false">
         <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
         <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.7 15.1A8.5 8.5 0 0 1 8.9 3.3 8.5 8.5 0 1 0 20.7 15.1Z"/></svg>
       </button>
-    </nav>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="primary-nav-links" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </nav>
     </div>
   </header>
 
@@ -172,10 +177,10 @@
 
           <article class="project project-printx" id="printx" data-project="printx">
             <button class="project-cover concept-cover printx-cover" type="button" data-project-open="printx" aria-label="Abrir detalhes do projeto PrintX">
-              <span class="printx-window"><span class="printx-mark" aria-hidden="true"><i></i><i></i><i></i></span><b>PrintX</b><span>Controle de custos de impressão 3D</span><small>Projeto ainda não iniciado</small></span>
-              <span class="cover-category">Projeto a iniciar</span><span class="cover-open" aria-hidden="true">↗</span>
+              <span class="printx-window"><span class="printx-mark" aria-hidden="true"><i></i><i></i><i></i></span><b>PrintX</b><span>Controle de custos de impressão 3D</span><small>Android · versão 1.0.0</small></span>
+              <span class="cover-category">Em desenvolvimento</span><span class="cover-open" aria-hidden="true">↗</span>
             </button>
-            <div class="project-copy"><div class="project-meta"><span>Impressão 3D</span><span>A iniciar</span></div><h3>PrintX</h3><p>Projeto planejado para acompanhar custos de impressão 3D. O desenvolvimento ainda não começou.</p><div class="project-foot"><span class="participation-tag"><i></i> Projeto autônomo</span><button class="project-details-trigger" type="button" data-project-open="printx">Ver projeto</button></div></div>
+            <div class="project-copy"><div class="project-meta"><span>Impressão 3D</span><span>APK Android · 1.0.0</span></div><h3>PrintX</h3><p>Calcule custo e lucro por impressão com filamento, energia, tempo de máquina e manutenção. Os dados ficam no dispositivo.</p><div class="project-foot"><span class="participation-tag"><i></i> Projeto autônomo</span><button class="project-details-trigger" type="button" data-project-open="printx">Ver projeto</button></div><a class="printx-download-button" href="/downloads/PrintX-1.0.0.apk" download>Baixar PrintX para Android <span aria-hidden="true">↓</span></a><p class="printx-download-note">APK de release assinado · 4 MB · <a href="/downloads/PrintX-1.0.0.sha256" download>Ver SHA-256</a></p></div>
           </article>
         </div>
       </div>
@@ -192,7 +197,7 @@
       <div class="detail-topline"><span id="detail-category"></span><button class="detail-close" type="button" aria-label="Fechar detalhes">Fechar <span aria-hidden="true">×</span></button></div>
       <div class="detail-content">
         <div class="detail-gallery"><figure class="detail-figure"><img id="detail-image" src="/assets/covers/cassola-homepage.jpg" alt="" hidden><figcaption id="detail-caption" aria-live="polite"></figcaption></figure><div class="detail-thumbnails" id="detail-thumbnails" aria-label="Imagens do projeto"></div></div>
-      <div class="detail-copy"><p class="detail-eyebrow" id="detail-status"></p><h2 id="detail-title"></h2><p class="detail-summary" id="detail-summary"></p><h3>Minha participação</h3><p id="detail-contribution"></p><h3>Como o projeto foi feito</h3><p id="detail-description"></p><div class="detail-stack"><h3>Tecnologias</h3><ul id="detail-technologies"></ul></div><p class="detail-note" id="detail-note" hidden></p><a class="detail-external" id="detail-link" hidden target="_blank" rel="noopener noreferrer">Visitar projeto público <span aria-hidden="true">↗</span></a></div>
+      <div class="detail-copy"><p class="detail-eyebrow" id="detail-status"></p><h2 id="detail-title"></h2><p class="detail-summary" id="detail-summary"></p><h3>Minha participação</h3><p id="detail-contribution"></p><h3>Como o projeto foi feito</h3><p id="detail-description"></p><div class="detail-stack"><h3>Tecnologias</h3><ul id="detail-technologies"></ul></div><p class="detail-note" id="detail-note" hidden></p><div class="detail-download-row" id="detail-download-row" hidden><a class="detail-download-button" id="detail-download" download>Baixar APK Android <span aria-hidden="true">↓</span></a><a id="detail-checksum" download>SHA-256</a></div><a class="detail-external" id="detail-link" hidden target="_blank" rel="noopener noreferrer">Visitar projeto público <span aria-hidden="true">↗</span></a></div>
       </div>
     </div>
   </dialog>

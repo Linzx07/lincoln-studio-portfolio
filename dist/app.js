@@ -30,6 +30,29 @@ themeToggle?.addEventListener('click', () => {
   setTheme(savedTheme);
 });
 
+const siteNav = document.querySelector('.site-header nav');
+const menuToggle = document.querySelector('#menu-toggle');
+function closeMobileMenu() {
+  siteNav?.removeAttribute('data-open');
+  menuToggle?.setAttribute('aria-expanded', 'false');
+  menuToggle?.setAttribute('aria-label', 'Abrir menu');
+}
+menuToggle?.addEventListener('click', () => {
+  const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+  if (isOpen) siteNav?.removeAttribute('data-open');
+  else siteNav?.setAttribute('data-open', 'true');
+  menuToggle.setAttribute('aria-expanded', String(!isOpen));
+  menuToggle.setAttribute('aria-label', isOpen ? 'Abrir menu' : 'Fechar menu');
+});
+siteNav?.querySelectorAll('.nav-links a').forEach((link) => link.addEventListener('click', closeMobileMenu));
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeMobileMenu();
+});
+document.addEventListener('click', (event) => {
+  if (siteNav && !siteNav.contains(event.target)) closeMobileMenu();
+});
+window.matchMedia('(min-width: 721px)').addEventListener('change', closeMobileMenu);
+
 const projectDetails = {
   cassola: {
     accent: '#357a54', gradient: 'linear-gradient(105deg, #357a54, #98c96a)',
@@ -100,12 +123,14 @@ const projectDetails = {
   },
   printx: {
     accent: '#355caa', gradient: 'linear-gradient(105deg, #355caa, #77a9ed)',
-    category: 'Projeto autônomo', status: 'Ainda não iniciado', title: 'PrintX',
-    summary: 'Projeto planejado para monitorar e controlar custos de impressão 3D.',
-    contribution: 'O desenvolvimento ainda não começou. Esta ficha será ampliada quando eu iniciar o projeto.',
-    description: 'A ideia do PrintX é acompanhar custos relacionados à impressão 3D. As telas, funcionalidades e decisões técnicas serão documentadas durante o desenvolvimento.',
-    technologies: ['Tecnologias ainda não definidas'],
-    note: 'A imagem é uma identificação visual provisória. Ainda não há interface funcional.'
+    category: 'Aplicativo Android', status: 'Versão 1.0.0 disponível', title: 'PrintX',
+    summary: 'Aplicativo para calcular custo e lucro por impressão 3D.',
+    contribution: 'Projeto autoral: identidade visual, interface e desenvolvimento do produto.',
+    description: 'O PrintX reúne os custos de filamento, energia, tempo de máquina e manutenção para estimar o custo total e o lucro de cada impressão. Os dados ficam salvos no próprio dispositivo.',
+    technologies: ['React', 'Vite', 'Capacitor', 'Android'],
+    note: 'O Android pode solicitar permissão para instalar apps desta origem e exibir um aviso de desenvolvedor não verificado. O APK é assinado, não solicita acesso à internet e tem um SHA-256 público para conferência.',
+    download: '/downloads/PrintX-1.0.0.apk',
+    checksum: '/downloads/PrintX-1.0.0.sha256'
   }
 };
 
@@ -141,6 +166,14 @@ function openProject(key, trigger) {
   const note = document.querySelector('#detail-note');
   note.textContent = project.note || '';
   note.hidden = !project.note;
+  const downloadRow = document.querySelector('#detail-download-row');
+  const download = document.querySelector('#detail-download');
+  const checksum = document.querySelector('#detail-checksum');
+  downloadRow.hidden = !project.download;
+  if (project.download) {
+    download.href = project.download;
+    checksum.href = project.checksum;
+  }
   const link = document.querySelector('#detail-link');
   link.hidden = !project.link;
   if (project.link) link.href = project.link;
