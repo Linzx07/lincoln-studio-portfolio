@@ -166,6 +166,7 @@ body[data-theme="dark"] .printx-cover { background: linear-gradient(135deg, #263
 .printx-window > b { font-family: Archivo, sans-serif; font-size: clamp(1.25rem, 3vw, 1.8rem); letter-spacing: -.03em; }
 .printx-window > span { color: #40577d; font-size: clamp(.82rem, 2vw, 1rem); }
 .printx-window > small { color: #355caa; font-size: .78rem; font-weight: 750; }
+.printx-download-note { margin-top: .8rem; color: var(--muted); font-size: .76rem; font-weight: 650; }
 .phone-speaker { width: 45px; height: 5px; margin: -.3rem auto .2rem; border-radius: 10px; background: #42575a; }
 .closing { display: flex; width: var(--page-width); align-items: end; justify-content: space-between; gap: 2rem; margin: 0 auto; padding: clamp(4rem, 8vw, 7rem) 0; border-top: 1px solid var(--line); }
 .closing h2 { max-width: 16ch; }

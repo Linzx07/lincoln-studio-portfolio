@@ -100,12 +100,12 @@ const projectDetails = {
   },
   printx: {
     accent: '#355caa', gradient: 'linear-gradient(105deg, #355caa, #77a9ed)',
-    category: 'Projeto autônomo', status: 'Ainda não iniciado', title: 'PrintX',
-    summary: 'Projeto planejado para monitorar e controlar custos de impressão 3D.',
-    contribution: 'O desenvolvimento ainda não começou. Esta ficha será ampliada quando eu iniciar o projeto.',
-    description: 'A ideia do PrintX é acompanhar custos relacionados à impressão 3D. As telas, funcionalidades e decisões técnicas serão documentadas durante o desenvolvimento.',
-    technologies: ['Tecnologias ainda não definidas'],
-    note: 'A imagem é uma identificação visual provisória. Ainda não há interface funcional.'
+    category: 'Aplicativo Android', status: 'Em desenvolvimento', title: 'PrintX',
+    summary: 'Aplicativo para calcular custo e lucro por impressão 3D.',
+    contribution: 'Projeto autoral: identidade visual, interface e desenvolvimento do produto.',
+    description: 'O PrintX reúne os custos de filamento, energia, tempo de máquina e manutenção para estimar o custo total e o lucro de cada impressão. Os dados ficam salvos no próprio dispositivo.',
+    technologies: ['React', 'Vite', 'Capacitor', 'Android'],
+    note: 'O APK para instalação direta pelo portfólio estará disponível após a compilação e assinatura da versão de lançamento.'
   }
 };
 
