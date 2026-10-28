@@ -28,6 +28,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 html { min-width: 320px; scroll-padding-top: 84px; }
 body { margin: 0; background: var(--page); color: var(--ink); transition: background .25s ease, color .25s ease; }
+body.project-modal-open { position: fixed; width: 100%; overflow: hidden; }
 body, button, a { -webkit-tap-highlight-color: transparent; }
 body[data-theme="dark"] { color-scheme: dark; --page: #101a29; --paper: #17243a; --paper-2: #22334c; --ink: #edf3ff; --muted: #bdc9dc; --line: #384a65; --brand: #a9c7ff; --brand-dark: #c0d5ff; --brand-soft: #203351; --cassola: #98d7a5; --aurum: #f0c975; --hype: #d2a4ff; --ebha: #7edbd1; --registradora: #8bdbbc; --finance: #a7b9ff; --printx: #a9c5ff; --projects-blue: #15233b; --shadow: 0 24px 64px rgba(0,0,0,.42); }
 ::selection { background: #b9d0ff; color: #10244b; }
@@ -276,7 +277,8 @@ footer > a:last-child { color: var(--brand); font-weight: 700; text-decoration: 
   .detail-content { grid-template-columns: 1fr; gap: .5rem; }
   .detail-copy { max-height: none; overflow: visible; }
   .detail-figure img { height: 34vh; min-height: 210px; }
-  .project-dialog { width: calc(100vw - 20px); max-height: calc(100dvh - 20px); overflow-y: auto; overscroll-behavior: contain; }
+  .project-dialog { width: calc(100vw - 16px); height: calc(100vh - 16px); height: calc(100dvh - 16px); max-height: calc(100dvh - 16px); padding: 0; overflow: hidden; }
+  .detail-shell { height: 100%; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
   .detail-topline { position: sticky; z-index: 1; top: -1rem; background: var(--paper); }
   .detail-content, .detail-gallery, .detail-copy { min-width: 0; }
   .detail-copy { overflow-wrap: anywhere; }
@@ -374,10 +376,7 @@ footer > a:last-child { color: var(--brand); font-weight: 700; text-decoration: 
 .project-cover::after { position: absolute; right: 0; bottom: 0; left: 0; height: 3px; background: var(--project-gradient, linear-gradient(90deg, var(--brand), #8bb0ec)); content: ""; }
 .project-copy h3 { text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--project-accent, var(--brand)) 45%, transparent); text-decoration-thickness: 2px; text-underline-offset: .2em; }
 .project-details-trigger, .project-cassola .project-details-trigger, .project-aurum .project-details-trigger, .project-hype .project-details-trigger, .project-ebha .project-details-trigger, .project-register .project-details-trigger, .project-printx .project-details-trigger { color: var(--project-accent, var(--brand)); }
-.project-dialog { position: relative; overflow: hidden; }
-@media (max-width: 720px) {
-  .project-dialog { overflow-x: hidden; overflow-y: auto; }
-}
+.project-dialog { position: fixed; overflow: hidden; }
 .project-dialog::before { display: none; }
 .detail-copy h2, .detail-eyebrow, .detail-external { color: var(--project-accent, var(--brand)); }
 .detail-thumb[aria-pressed="true"] { border-color: var(--project-accent, var(--brand)); }
@@ -422,6 +421,9 @@ footer > a:last-child { color: var(--brand); font-weight: 700; text-decoration: 
 .project-dialog::before { display: none; }
 .detail-topline { position: relative; }
 .detail-topline::after { position: absolute; bottom: -1px; left: 0; width: 38%; height: 3px; background: var(--project-gradient, linear-gradient(90deg, var(--brand), #8bb0ec)); content: ""; }
+@media (max-width: 720px) {
+  .detail-topline { position: sticky; top: 0; }
+}
 @media (max-width: 390px) {
   .hero-side-cover > span, .hero-side-cover b, .timeline-date { font-size: .75rem; }
 }

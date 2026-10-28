@@ -135,6 +135,24 @@ const projectDetails = {
 };
 
 const dialog = document.querySelector('.project-dialog');
+let lockedPageScrollY = null;
+function lockPageScroll() {
+  if (lockedPageScrollY !== null) return;
+  lockedPageScrollY = window.scrollY;
+  document.body.style.top = `-${lockedPageScrollY}px`;
+  document.body.classList.add('project-modal-open');
+}
+function unlockPageScroll() {
+  if (lockedPageScrollY === null) return;
+  const previousScrollY = lockedPageScrollY;
+  lockedPageScrollY = null;
+  document.body.classList.remove('project-modal-open');
+  document.body.style.top = '';
+  const previousBehavior = document.documentElement.style.scrollBehavior;
+  document.documentElement.style.scrollBehavior = 'auto';
+  window.scrollTo(0, previousScrollY);
+  document.documentElement.style.scrollBehavior = previousBehavior;
+}
 const closeDialog = dialog?.querySelector('.detail-close');
 const image = document.querySelector('#detail-image');
 const caption = document.querySelector('#detail-caption');
@@ -199,9 +217,13 @@ function openProject(key, trigger) {
     thumbs.append(panel);
   }
   dialog.showModal();
+  lockPageScroll();
   closeDialog.focus();
 }
 document.querySelectorAll('[data-project-open]').forEach((button) => button.addEventListener('click', () => openProject(button.dataset.projectOpen, button)));
 closeDialog?.addEventListener('click', () => dialog.close());
 dialog?.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
-dialog?.addEventListener('close', () => lastTrigger?.focus());
+dialog?.addEventListener('close', () => {
+  unlockPageScroll();
+  lastTrigger?.focus();
+});
