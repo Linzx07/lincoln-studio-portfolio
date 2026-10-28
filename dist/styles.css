@@ -166,7 +166,11 @@ body[data-theme="dark"] .printx-cover { background: linear-gradient(135deg, #263
 .printx-window > b { font-family: Archivo, sans-serif; font-size: clamp(1.25rem, 3vw, 1.8rem); letter-spacing: -.03em; }
 .printx-window > span { color: #40577d; font-size: clamp(.82rem, 2vw, 1rem); }
 .printx-window > small { color: #355caa; font-size: .78rem; font-weight: 750; }
-.printx-download-note { margin-top: .8rem; color: var(--muted); font-size: .76rem; font-weight: 650; }
+.printx-download-button, .detail-download-button { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; width: fit-content; margin-top: .8rem; padding: .7rem 1rem; border: 1px solid #244b91; border-radius: 6px; background: #244b91; color: #fff; font-size: .84rem; font-weight: 750; line-height: 1.3; text-decoration: none; transition: background-color .18s ease, transform .18s ease; }
+.printx-download-button:hover, .detail-download-button:hover { background: #183766; transform: translateY(-1px); }
+.printx-download-button:focus-visible, .detail-download-button:focus-visible, .detail-download-row > a:focus-visible { outline: 3px solid #8eb2ef; outline-offset: 3px; }
+.printx-download-note { margin-top: .5rem; color: var(--muted); font-size: .76rem; font-weight: 650; }
+.printx-download-note a, .detail-download-row > a:not(.detail-download-button) { color: var(--project-accent, var(--brand)); font-weight: 750; text-underline-offset: 3px; }
 .phone-speaker { width: 45px; height: 5px; margin: -.3rem auto .2rem; border-radius: 10px; background: #42575a; }
 .closing { display: flex; width: var(--page-width); align-items: end; justify-content: space-between; gap: 2rem; margin: 0 auto; padding: clamp(4rem, 8vw, 7rem) 0; border-top: 1px solid var(--line); }
 .closing h2 { max-width: 16ch; }
@@ -211,6 +215,9 @@ footer > a:last-child { color: var(--brand); font-weight: 700; text-decoration: 
 .detail-note { padding: .8rem 1rem; border: 1px solid var(--line); border-radius: 6px; background: var(--paper-2); font-size: .86rem; }
 .detail-note[hidden], .detail-external[hidden] { display: none; }
 .detail-external { display: inline-flex; gap: .5rem; margin: .5rem 0 1rem; color: var(--brand); font-weight: 750; }
+.detail-download-row { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem; margin: .75rem 0 1rem; }
+.detail-download-row[hidden] { display: none; }
+.detail-download-button { margin-top: 0; }
 @media (max-width: 1000px) {
   :root { --page-width: calc(100% - 52px); }
   .hero { min-height: auto; grid-template-columns: .92fr 1.08fr; gap: 2.3rem; padding-top: 3.5rem; }
