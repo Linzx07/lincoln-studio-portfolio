@@ -1,5 +1,10 @@
 const themeToggle = document.querySelector('#theme-toggle');
 const themeMeta = document.querySelector('#theme-color-meta');
+function applyThemeCaptures(dark = document.body.dataset.theme === 'dark') {
+  document.querySelectorAll('img[data-theme-light][data-theme-dark]').forEach((capture) => {
+    capture.src = dark ? capture.dataset.themeDark : capture.dataset.themeLight;
+  });
+}
 function setTheme(theme, persist = true) {
   const dark = theme === 'dark';
   document.body.dataset.theme = dark ? 'dark' : 'light';
@@ -9,7 +14,8 @@ function setTheme(theme, persist = true) {
     const label = themeToggle.querySelector('.theme-label');
     if (label) label.textContent = dark ? 'Tema claro' : 'Tema escuro';
   }
-  if (themeMeta) themeMeta.content = dark ? '#101a29' : '#f2f5f3';
+  if (themeMeta) themeMeta.content = dark ? '#171327' : '#f3f0ff';
+  applyThemeCaptures(dark);
   if (persist) {
     try { localStorage.setItem('portfolio-theme', dark ? 'dark' : 'light'); } catch {}
   }
@@ -58,45 +64,36 @@ const projectDetails = {
     accent: '#357a54', gradient: 'linear-gradient(105deg, #357a54, #98c96a)',
     category: 'Experiência profissional como CLT', status: 'Site institucional', title: 'Cassola Ambiental',
     summary: 'Site institucional para uma empresa de logística reversa e reciclagem.',
-    contribution: 'Criei o site enquanto trabalhava na empresa como CLT. As credenciais e a gestão do site pertencem à empresa.',
-    description: 'A página organiza as informações sobre logística reversa, rastreabilidade ambiental, educação e projetos. As primeiras imagens mostram a homepage pública e elementos visuais do site.',
+    contribution: 'Durante meu vínculo CLT, planejei, implementei e publiquei o site institucional; hoje também participo da sua manutenção. As credenciais e a gestão de produção pertencem à Cassola.',
+    description: 'A página inicial apresenta as soluções de logística reversa e reciclagem da Cassola, com caminhos para rastreabilidade, descarte eletrônico, conformidade e educação ambiental. O SRA e a área de projetos e parcerias aparecem como partes próprias do site.',
     technologies: ['TypeScript', 'Lovable'], link: 'https://cassolaambiental.com/',
     images: [
-      ['assets/covers/cassola-homepage.jpg', 'Captura da homepage pública da Cassola Ambiental'],
-      ['assets/gallery/cassola/hero-mural.webp', 'Mural da Cassola Ambiental'],
-      ['assets/gallery/cassola/hero-desmonte.webp', 'Estação de desmonte de eletrônicos'],
-      ['assets/gallery/cassola/ecobot-mascot.webp', 'Mascote Ecobot usado no site']
+      ['assets/gallery/cassola/entry-light.webp', 'Primeira tela da página inicial do site da Cassola Ambiental', 'assets/gallery/cassola/entry-dark.webp']
     ]
   },
   aurum: {
     accent: '#a66c18', gradient: 'linear-gradient(105deg, #a66c18, #eed078)',
     category: 'Experiência profissional como CLT', status: 'Site institucional', title: 'Aurum Tech',
     summary: 'Site institucional criado dentro da empresa durante minha atuação como CLT.',
-    contribution: 'Desenvolvi o site da empresa. As credenciais e a gestão do site ficam com a própria empresa.',
-    description: 'A página apresenta a atuação da Aurumtech em materiais críticos e mineração urbana. As imagens mostram a homepage pública, a fachada e elementos publicados no site.',
-    technologies: ['Tecnologias não informadas'], link: 'https://aurumtech.eco.br/',
+    contribution: 'Criei o site institucional durante meu vínculo CLT. As credenciais e a gestão do site ficam com a própria empresa.',
+    description: 'A página inicial apresenta a atuação da Aurumtech em mineração urbana e materiais estratégicos, com acesso às áreas de soluções, tecnologia, educação e conformidade.',
+    technologies: [], link: 'https://aurumtech.eco.br/',
     images: [
-      ['assets/covers/aurum-homepage.jpg', 'Captura da homepage pública da Aurumtech'],
-      ['assets/gallery/aurum/hero-fachada.webp', 'Fachada da Aurumtech'],
-      ['assets/gallery/aurum/reactors-array.webp', 'Fileira de reatores da planta'],
-      ['assets/gallery/aurum/mineral-site.webp', 'Conteúdo da página sobre materiais estratégicos']
+      ['assets/gallery/aurum/entry-light.webp', 'Primeira tela da página inicial do site da Aurumtech', 'assets/gallery/aurum/entry-dark.webp']
     ]
   },
   hype: {
     accent: '#7540bf', gradient: 'linear-gradient(105deg, #7540bf, #e46aaa)',
     category: 'Projeto autônomo', status: 'Fórum e comunidade', title: 'Hype Universo RP + Fórum',
-    summary: 'Experiência web para a comunidade do Hype Universo RP, com fórum, mapa e loja.',
-    contribution: 'Projeto autônomo. Desenvolvi o fórum e a experiência web da comunidade.',
-    description: 'O fórum foi construído em Next.js com áreas de discussão, tópicos, respostas e recursos de comunidade. A página pública informa que a conexão com o servidor está em preparação. As imagens mostram o fórum e a identidade do projeto, não os sistemas dentro da gamemode.',
+    summary: 'Experiência web e UCP para a comunidade do Hype Universo RP.',
+    contribution: 'Projeto autônomo. Desenvolvi a experiência web da comunidade e o fórum.',
+    description: 'A página de entrada conecta a comunidade ao UCP, fórum, mapa e loja; o fórum organiza conversas em áreas próprias. O painel mostrado na galeria contém apenas dados demonstrativos fictícios. As tecnologias verificadas no projeto são Next.js, React, TypeScript e MySQL.',
     technologies: ['Next.js', 'React', 'TypeScript', 'MySQL'],
     link: 'https://hype-universo-rp.lincolnbcfreitas.workers.dev/',
-    note: 'As capturas da gamemode serão adicionadas manualmente por mim. Esta galeria mostra apenas o fórum, a marca e o mapa.',
+    note: 'A tela do UCP foi preenchida com dados demonstrativos fictícios. Nenhuma conta ou informação real de jogador é exibida.',
     images: [
-      ['assets/covers/hype-forum-homepage.jpg', 'Captura da homepage pública do Hype Universo RP e Fórum'],
-      ['assets/gallery/hype/hype-banner.webp', 'Banner do Hype Universo RP'],
-      ['assets/gallery/hype/hype-logo.webp', 'Símbolo do Hype Universo RP'],
-      ['assets/gallery/hype/hype-wordmark.png', 'Identidade visual do servidor'],
-      ['assets/gallery/hype/san-andreas-map.svg', 'Mapa do universo de roleplay']
+      ['assets/gallery/hype/entry-light.webp', 'Primeira tela do site Hype Universo RP ao entrar, com acesso ao UCP e ao fórum', 'assets/gallery/hype/entry-dark.webp'],
+      ['assets/gallery/hype/ucp-preview.png', 'UCP do Hype Universo RP · painel com dados demonstrativos fictícios']
     ]
   },
   ebha: {
@@ -104,7 +101,7 @@ const projectDetails = {
     category: 'Projeto autônomo', status: 'Loja em desenvolvimento', title: 'EBHA Store',
     summary: 'E-commerce para produtos de papelaria, brinquedos educativos e impressão 3D.',
     contribution: 'Desenvolvi a loja do zero, com catálogo e arquitetura preparada para organizar mais de uma loja.',
-    description: 'Esta página está publicada como prévia pública, mas o catálogo e os conteúdos ainda usam dados demonstrativos. A integração com UpSeller aguarda a definição do cliente sobre a forma de conexão.',
+    description: 'Desenvolvi o front-end da loja com React, TypeScript, Vite e Tailwind CSS. A estrutura organiza a experiência de catálogo; os produtos e benefícios exibidos são demonstrativos. A integração com UpSeller aguarda a definição do cliente sobre a forma de conexão.',
     technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
     link: 'https://ebha.lincolnbcfreitas.workers.dev/',
     note: 'A imagem mostra a interface do projeto, não uma loja em produção. Os produtos e benefícios exibidos são demonstrativos.' ,
@@ -114,11 +111,11 @@ const projectDetails = {
   },
   register: {
     accent: '#247a66', gradient: 'linear-gradient(105deg, #247a66, #9dc94f)',
-    category: 'Projeto autônomo', status: 'A iniciar em breve', title: 'Registradora de Caixa e Administração',
+    category: 'Projeto futuro', status: 'Ainda não iniciado', title: 'Registradora de Caixa e Administração',
     summary: 'Projeto autoral que começarei em breve.',
     contribution: 'A implementação ainda não começou. Minha participação será definida conforme o escopo ganhar forma.',
     description: 'O projeto terá foco em registradora de caixa e administração. As funcionalidades e as decisões técnicas serão definidas durante o desenvolvimento.',
-    technologies: ['A definir'],
+    technologies: [],
     note: 'Esta é uma prévia conceitual. O trabalho ainda não foi iniciado.'
   },
   printx: {
@@ -126,11 +123,12 @@ const projectDetails = {
     category: 'Aplicativo Android', status: 'Versão 1.0.0 disponível', title: 'PrintX',
     summary: 'Aplicativo para calcular custo e lucro por impressão 3D.',
     contribution: 'Projeto autoral: identidade visual, interface e desenvolvimento do produto.',
-    description: 'O PrintX reúne os custos de filamento, energia, tempo de máquina e manutenção para estimar o custo total e o lucro de cada impressão. Os dados ficam salvos no próprio dispositivo.',
+    description: 'O aplicativo reúne material, energia, tempo de máquina e manutenção para estimar custo e lucro por peça. A interface foi construída com React e Vite e empacotada para Android com Capacitor; os dados ficam salvos no próprio dispositivo.',
     technologies: ['React', 'Vite', 'Capacitor', 'Android'],
     note: 'O Android pode solicitar permissão para instalar apps desta origem e exibir um aviso de desenvolvedor não verificado. O APK é assinado, não solicita acesso à internet e tem um SHA-256 público para conferência.',
     download: '/downloads/PrintX-1.0.0.apk',
-    checksum: '/downloads/PrintX-1.0.0.sha256'
+    checksum: '/downloads/PrintX-1.0.0.sha256',
+    images: [['assets/gallery/printx/printx-mobile.png', 'PrintX em execução no layout móvel do aplicativo, com dados demonstrativos']]
   }
 };
 
@@ -158,17 +156,27 @@ const image = document.querySelector('#detail-image');
 const caption = document.querySelector('#detail-caption');
 const thumbs = document.querySelector('#detail-thumbnails');
 let lastTrigger;
-function renderImage(src, label, selected) {
+function renderImage(src, label, selected, darkSrc) {
+  dialog.dataset.imageKind = src.includes('ucp-preview.png') ? 'ucp' : 'site';
   image.src = src;
+  if (darkSrc) {
+    image.dataset.themeLight = src;
+    image.dataset.themeDark = darkSrc;
+  } else {
+    delete image.dataset.themeLight;
+    delete image.dataset.themeDark;
+  }
   image.alt = label;
   image.hidden = false;
   caption.textContent = label;
+  applyThemeCaptures();
   thumbs.querySelectorAll('button').forEach((button) => button.setAttribute('aria-pressed', String(button === selected)));
 }
 function openProject(key, trigger) {
   const project = projectDetails[key];
   if (!project || !dialog) return;
   lastTrigger = trigger;
+  dialog.dataset.project = key;
   dialog.style.setProperty('--project-accent', project.accent || '#17396f');
   dialog.style.setProperty('--project-gradient', project.gradient || 'linear-gradient(105deg, #17396f, #6ca2e8)');
   document.querySelector('#detail-category').textContent = project.category;
@@ -178,6 +186,8 @@ function openProject(key, trigger) {
   document.querySelector('#detail-contribution').textContent = project.contribution;
   document.querySelector('#detail-description').textContent = project.description;
   const list = document.querySelector('#detail-technologies');
+  const stack = document.querySelector('.detail-stack');
+  stack.hidden = !project.technologies?.length;
   list.replaceChildren(...project.technologies.map((technology) => {
     const item = document.createElement('li'); item.textContent = technology; return item;
   }));
@@ -197,17 +207,18 @@ function openProject(key, trigger) {
   if (project.link) link.href = project.link;
   thumbs.replaceChildren();
   if (project.images?.length) {
-    project.images.forEach(([src, label], index) => {
+    project.images.forEach(([src, label, darkSrc], index) => {
       const button = document.createElement('button');
       button.type = 'button'; button.className = 'detail-thumb';
       button.setAttribute('aria-label', `Mostrar imagem ${index + 1}: ${label}`);
       button.setAttribute('aria-pressed', 'false');
       const thumbnail = document.createElement('img'); thumbnail.src = src; thumbnail.alt = ''; thumbnail.loading = 'lazy';
+      if (darkSrc) { thumbnail.dataset.themeLight = src; thumbnail.dataset.themeDark = darkSrc; }
       button.append(thumbnail);
-      button.addEventListener('click', () => renderImage(src, label, button));
+      button.addEventListener('click', () => renderImage(src, label, button, darkSrc));
       thumbs.append(button);
     });
-    renderImage(...project.images[0], thumbs.firstElementChild);
+    renderImage(project.images[0][0], project.images[0][1], thumbs.firstElementChild, project.images[0][2]);
   } else {
     image.hidden = true;
     image.removeAttribute('src');
